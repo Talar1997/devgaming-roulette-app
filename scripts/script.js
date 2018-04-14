@@ -182,5 +182,5 @@ span.onclick = function() {
 }
 
 function closeModalWindow(){
-    modal.style.display = "none";
+    $('#myModal').fadeOut("fast");
 }
