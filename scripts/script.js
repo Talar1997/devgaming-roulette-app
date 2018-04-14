@@ -1,3 +1,5 @@
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
 const delay = 7000;
 var credits = 999;
 var required = 1;
@@ -7,17 +9,7 @@ $( document ).ready(function() {
   document.getElementById("credits").innerHTML = credits;
 });
 
-var modal = document.getElementById('myModal');
-var span = document.getElementsByClassName("close")[0];
-
-span.onclick = function() {
-    closeModalWindow();
-}
-
-function closeModalWindow(){
-    modal.style.display = "none";
-}
-
+//Nazwa, typ, miniaturka, zdjecie
 var JubilerCase = [
     ["✪ Bandito ✪", "legendary", "http://gtav.pl/uploads/gtam/GTASA_vehicles/568.jpg", "https://i.imgur.com/fwMNHX6.png"],
     ["Bullet", "mythical", "http://gtav.pl/uploads/gtam/GTASA_vehicles/541.jpg", "https://i.imgur.com/oHx73bO.png"],
@@ -39,8 +31,8 @@ var JubilerCase = [
 
 function showAllPrizes(caseName){
     //Wyświetlanie wszystkich możliwych przedmiotów do zdobycia
-    var cars = caseName.slice();
-    var arrlen = cars.length;
+    var arr = caseName.slice();
+    var arrlen = arr.length;
     for(var i = arrlen-1; i >= 0; i--){
         var card_wrapper = document.createElement("div");
         card_wrapper.className += "card_wrapper ";
@@ -49,14 +41,14 @@ function showAllPrizes(caseName){
 
         var card = document.createElement("div");
         card.className += "card";
-        card.setAttribute("style", "background-image: url('"+cars[i][2]+"')");
-        $(card).attr('value', cars[i][0]);
+        card.setAttribute("style", "background-image: url('"+arr[i][2]+"')");
+        $(card).attr('value', arr[i][0]);
         card_wrapper.appendChild(card);
 
         var info = document.createElement("div");
         info.className += "info ";
-        info.className += cars[i][1];
-        info.innerHTML = cars[i][0];
+        info.className += arr[i][1];
+        info.innerHTML = arr[i][0];
         card.appendChild(info);
     }
 
@@ -66,8 +58,8 @@ function showAllPrizes(caseName){
 }
 
 function generateCase(caseName){
-    var cars = caseName.slice();
-    var arrlen = cars.length;
+    var arr = caseName.slice();
+    var arrlen = arr.length;
 
     var cardList = document.createElement("div");
     cardList.className += "cardList ";
@@ -78,39 +70,39 @@ function generateCase(caseName){
     //showAllPrizes(caseName);
 
     for(var i = 0; i < arrlen; i++){
-        if(cars[i][1] == "common"){
-            for(var j = 0; j < 300; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
+        if(arr[i][1] == "common"){
+            for(var j = 0; j < 300; j++) arr.push([arr[i][0], arr[i][1], arr[i][2]]);
         }
-        else if(cars[i][1] == "rare"){
-            for(var j = 0; j < 60; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
+        else if(arr[i][1] == "rare"){
+            for(var j = 0; j < 60; j++) arr.push([arr[i][0], arr[i][1], arr[i][2]]);
         }
-        else if(cars[i][1] == "unreal"){
-            for(var j = 0; j < 15; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
+        else if(arr[i][1] == "unreal"){
+            for(var j = 0; j < 10; j++) arr.push([arr[i][0], arr[i][1], arr[i][2]]);
         }
-        else if(cars[i][1] == "mythical"){
-            for(var j = 0; j < 7; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
+        else if(arr[i][1] == "mythical"){
+            for(var j = 0; j < 5; j++) arr.push([arr[i][0], arr[i][1], arr[i][2]]);
         }
-        else if(cars[i][1] == "legendary"){
-            for(var j = 0; j < 3; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
+        else if(arr[i][1] == "legendary"){
+            for(var j = 0; j < 1; j++) arr.push([arr[i][0], arr[i][1], arr[i][2]]);
         }
     }
 
 
     //Losowe generowanie caseFielda
     for(var i = 0; i < 80; i++){
-        var rand = (Math.floor((Math.random()*7000)+4000)) % cars.length;
+        var rand = (Math.floor((Math.random()*100000))) % arr.length;
 
         var card = document.createElement("div");
         card.className += "card";
         $(card).attr('id', 'card_'+i);
-        $(card).attr('value', cars[rand][0]);
-        card.setAttribute("style", "background-image: url('"+cars[rand][2]+"')");
+        $(card).attr('value', arr[rand][0]);
+        card.setAttribute("style", "background-image: url('"+arr[rand][2]+"')");
         $('.cardList')[0].appendChild(card);
 
         var info = document.createElement("div");
         info.className += "info ";
-        info.className += cars[rand][1];
-        info.innerHTML = cars[rand][0];
+        info.className += arr[rand][1];
+        info.innerHTML = arr[rand][0];
         card.appendChild(info);
    }
 
@@ -184,3 +176,11 @@ $('#open').click(function() {
         }, 1300)
     }
 });
+
+span.onclick = function() {
+    closeModalWindow();
+}
+
+function closeModalWindow(){
+    modal.style.display = "none";
+}
