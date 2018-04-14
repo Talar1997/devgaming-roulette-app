@@ -43,20 +43,20 @@ function showAllPrizes(caseName){
         card_wrapper.className += "card_wrapper ";
         $(card_wrapper).attr("style", "display: none");
         $('.bottom_field')[0].appendChild(card_wrapper);
-        
+
         var card = document.createElement("div");
         card.className += "card";
         card.setAttribute("style", "background-image: url('"+cars[i][2]+"')");
         $(card).attr('value', cars[i][0]);
         card_wrapper.appendChild(card);
-        
+
         var info = document.createElement("div");
         info.className += "info ";
         info.className += cars[i][1];
         info.innerHTML = cars[i][0];
         card.appendChild(info);
     }
-    
+
     $('.card_wrapper').each(function(){
         $(this).fadeIn("slow");
     })
@@ -65,15 +65,15 @@ function showAllPrizes(caseName){
 function generateCase(caseName){
     var cars = caseName.slice();
     var arrlen = cars.length;
-    
+
     var cardList = document.createElement("div");
     cardList.className += "cardList ";
     $(cardList).attr('id', 'main');
     $(cardList).attr("style", "display: none");
     $('.center')[0].appendChild(cardList);
-    
+
     //showAllPrizes(caseName);
-    
+
     for(var i = 0; i < arrlen; i++){
         if(cars[i][1] == "common"){
             for(var j = 0; j < 300; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
@@ -91,8 +91,8 @@ function generateCase(caseName){
             for(var j = 0; j < 3; j++) cars.push([cars[i][0], cars[i][1], cars[i][2]]);
         }
     }
-    
-    
+
+
     //Losowe generowanie caseFielda
     for(var i = 0; i < 80; i++){
         var rand = (Math.floor((Math.random()*7000)+4000)) % cars.length;
@@ -110,7 +110,7 @@ function generateCase(caseName){
         info.innerHTML = cars[rand][0];
         card.appendChild(info);
    }
-    
+
     $('.cardList').fadeIn("slow");
     $('#spin').prop('disabled', false);
 }
@@ -122,25 +122,25 @@ function spin() {
     $('.card').first().animate({
         marginLeft: newMargin
     }, delay);
-    
+
     var card_id = parseInt((-((newMargin-100) / 200))) + 1;
     var itemWon = $('#card_'+card_id).attr('value');
-    
+
     showPrize(JubilerCase, itemWon);
 }
 
 function showPrize(caseName, item){
     var arr = caseName.slice();
     var prizePicture;
-    
+
     for(var i = 0; i < arr.length; i++){
         if(arr[i][0] == item){
             $('.modal-header')[0].innerHTML = "Wygrany przedmiot: " + item;
             $('.modal-img')[0].setAttribute("style", "background-image: url('"+arr[i][3]+"')");
             break;
-        }   
+        }
     }
-    
+
     setTimeout(function(){
             $('#myModal').fadeIn("fast");
         }, delay+1000);
@@ -152,28 +152,28 @@ function startSpinning(){
     setTimeout(spin,100);
     if(credits>=required){
         setTimeout(function(){
-            $('#open').prop('disabled',false); 
-        }, delay);
+            $('#open').prop('disabled',false);
+        }, delay + 2000);
     }
 }
 
 var credits = document.getElementById("credits").innerHTML;
 var required = 1;
 $('#open').click(function() {
-    
+
     if(credits >= required){
         credits -= required;
         $('.case_field').fadeIn("fast");
         $('#open').prop('disabled',true);
         document.getElementById("credits").innerHTML = credits;
-        
+
         try{
             /*$('.card_wrapper').each(function(){
                 $(this).remove();
             });*/
             $('.cardList')[0].remove();
         }catch(err){}
-        
+
         $('.top_field').fadeOut("fast");
         setTimeout(function(){
             generateCase(JubilerCase);
