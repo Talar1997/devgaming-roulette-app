@@ -1,10 +1,8 @@
-<!---
-  PONIŻSZY SKRYPT JEST NAPISANY Z NUDÓW I NIE ZOSTANIE WPROWADZONY NA DEVGAMING
+<!-- Wzorowane na: https://codepen.io/anon/pen/qovzqo
 
-TODO:
-    -Inventory, w kt órym znajdują się skrzynki i klucze
-    -Po zamknieciu okna z nagrodą pokazuje się inventory
--->
+Poniższy skrypt jest wyłącznie żartem i nie zostanie wprowadzony na devgaming
+
+--->
 <html>
     <head>
         <link rel="stylesheet" href="styles/layout.css">
@@ -23,9 +21,84 @@ TODO:
                     </div>
                 </div>
             </div>
+            <div class="header">Usługi premium (dostępne: <span id="credits">5</span> kluczy)</div>
+            <div class="middle menu">
+                <a class="menuItem" value="LombardCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper " style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/YKqqZJt.png')">
+                                <div class="info other">Skrzynia operacji lombard</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menuItem" value="JunkyardCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper" style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/QzPCR8Y.png')">
+                                <div class="info other">Skrzynia złomiarza</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menuItem" value="JubilerCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper " style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/JGBOthU.png')">
+                                <div class="info other">Skrzynia Jubilera</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menuItem" value="PremiumCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper" style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/rdPuR2i.png')">
+                                <div class="info other">Skrzynia Premium</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menuItem" value="MoneyCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper " style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/6PvxaCp.png')">
+                                <div class="info other">Skrzynia z pieniędzmi</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menuItem" value="WorkshopCase">
+                    <div class="buy-btn">
+                        <div class="box_wrapper " style="">
+                            <div class="box" style="background-image: url('https://i.imgur.com/CQgu1IM.png')">
+                                <div class="info other">Skrzynia op. warsztat</div>
+                            </div>
+                        </div>
+                        <div class="openItem">
+                            <span>Otwórz skrzynie</span>
+                        </div>
+                    </div>
+                </a>
 
-            <div class="header">Usługi premium (dostępne: <span id="credits"></span> kluczy)</div>
-            <div class="middle">
+                <div style="clear:both;"></div>
+            </div>
+            <div class="middle case-opening">
                 <div class="center case_field"></div>
                 <div class="center top_field">
                     <div class="starter">
@@ -35,7 +108,7 @@ TODO:
                         <div class="triangle"></div>
                         <div class="triangle moved"></div>
                         <div class="case">
-                            <div class="card_wrapper " style=""><div class="card" style="background-image: url('https://i.imgur.com/YKqqZJt.png')" value="case"><div class="info other">Skrzynia operacji lombard</div></div></div>
+                            <div class="card_wrapper " style=""><div class="card" style="background-image: url('https://i.imgur.com/YKqqZJt.png')" value="case"><div class="info other" id="cName"></div></div></div>
                         </div>
                         <div class="clear"></div>
                     </div>
