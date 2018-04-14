@@ -1,8 +1,11 @@
+const delay = 7000;
+var credits = 1;
+var required = 1;
+
 $( document ).ready(function() {
   showAllPrizes(JubilerCase);
+  document.getElementById("credits").innerHTML = credits;
 });
-
-const delay = 7000;
 
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
@@ -157,8 +160,6 @@ function startSpinning(){
     }
 }
 
-var credits = document.getElementById("credits").innerHTML;
-var required = 1;
 $('#open').click(function() {
 
     if(credits >= required){
