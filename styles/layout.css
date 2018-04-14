@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+}
+
+html, body{
+    background-color: rgb(66,98,136);
+    padding: 20px;
+}
+
+.all{
+    width: 1000px;
+    margin: 0 auto !important;
+    padding: 0;
+}
+
+
+.header{
+    height: 36px;
+    width: 1000px;
+    background-color: rgb(223,228,234);
+    margin: 0 !important;
+    padding: 10px;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 16px;
+    font-stretch: 100%;
+    font-style: normal;
+}
+
+.middle{
+    min-height: 1050px;
+    height: auto;
+    width: 1000px;
+    background-color: rgb(186, 197, 210);
+    margin: 0 !important;
+    padding: 20px;
+}
+
+.center{
+    margin: 0 auto;
+}
+
+.case_field{
+    width: 600px;
+    display: none;
+    /*min-height: 150px;*/
+}
+
+.top_field{
+    width: 700px;
+    min-height: 150px;
+}
+
+.middle_field{
+    margin-top: 25px;
+    width: 200px;
+}
+
+.bottom_field{
+    margin-top: 25px;
+    margin-bottom: 30px;
+    width: 825px;
+}
+
+.input_btn {
+    background-color: #212121;
+    color: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: inset 0 1px 0 0 #5c5c5c, 0px 2px 3px rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 0 1px 0 0 #5c5c5c, 0px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 0 0 #5c5c5c, 0px 2px 3px rgba(0,0,0,0.2);
+    border-color: #212121;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    padding: 4px 10px;
+    cursor: pointer;
+    font: normal 13px helvetica,arial,sans-serif;
+    width: 200px;
+}
+
+.input_btn:disabled{
+    color: rgb(150,150,150);
+}
+
+

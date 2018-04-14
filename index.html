@@ -1,0 +1,52 @@
+<!-- Wzorowane na: https://codepen.io/anon/pen/qovzqo
+
+TODO:
+    -Inventory, w kt órym znajdują się skrzynki i klucze
+    -Po zamknieciu okna z nagrodą pokazuje się inventory
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/roulette.css">
+        <link rel="stylesheet" href="styles/modal.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="all" >
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-middle">
+                        <div class="modal-img"></div>
+                        <div class="input_btn close">Kontynuuj</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header">Usługi premium (dostępne: <span id="credits">5</span> kluczy)</div>
+            <div class="middle">
+                <div class="center case_field"></div>
+                <div class="center top_field">
+                    <div class="starter">
+                        <div class="key">
+                            <div class="card_wrapper " style=""><div class="card" style="background-image: url('https://i.imgur.com/SvkDWTc.png')" value="key"><div class="info other">Klucz do skrzyni</div></div></div>
+                        </div>
+                        <div class="triangle"></div>
+                        <div class="triangle moved"></div>
+                        <div class="case">
+                            <div class="card_wrapper " style=""><div class="card" style="background-image: url('https://i.imgur.com/YKqqZJt.png')" value="case"><div class="info other">Skrzynia operacji lombard</div></div></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="center middle_field">
+                    <button id="open" class="input_btn">Użyj klucza</button>
+                </div>
+                <div class="center bottom_field">
+                    <hr><br>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/script.js" type="text/javascript"></script>
+    </body>
+</html>
