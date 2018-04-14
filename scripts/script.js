@@ -1,5 +1,5 @@
 const delay = 7000;
-var credits = 1;
+var credits = 999;
 var required = 1;
 
 $( document ).ready(function() {
