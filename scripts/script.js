@@ -2,11 +2,38 @@ const delay = 8000;
 var credits = 999;
 var required = 1;
 var currentCase;
+var CurrentCaseName;
 
 
 $( document ).ready(function() {
+  var itemHistory = getCookie("itemHistory");
+  $('myItems')[0].innerHTML = itemHistory;
   document.getElementById("credits").innerHTML = credits;
 });
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 
 var allCases = [
     ["LombardCase", "Skrzynia operacji lombard" , "https://i.imgur.com/YKqqZJt.png"],
@@ -136,8 +163,8 @@ var WorkshopCase = [
     ["Stratum", "rare", "http://gtav.pl/uploads/gtam/GTASA_vehicles/561.jpg", ""],
     ["Club", "rare", "http://gtav.pl/uploads/gtam/GTASA_vehicles/589.jpg", ""],
     ["Picador", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/600.jpg", ""],
-    ["Hermes", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/474.jpg", ""],
-    ["Regina", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/479.jpg", ""],
+    ["Hermes", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/474.jpg", "https://i.imgur.com/buwtM6v.png"],
+    ["Regina", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/479.jpg", "https://i.imgur.com/BTXjesq.png"],
     ["Sunrise", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/550.jpg", ""],
     ["Manana", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/410.jpg", ""],
     ["Rumpo", "common", "http://gtav.pl/uploads/gtam/GTASA_vehicles/440.jpg", ""],
@@ -280,8 +307,10 @@ function addToItemList(currentCase, itemWon){
         break;
   }
 }
-  var old = $('.myItems')[0].innerHTML;
-  $('.myItems')[0].innerHTML = now + " <span class='" + className + "'>" + itemWon + "</span><br>" + old;
+  var oldItemHistory = $('.myItems')[0].innerHTML;
+   var newItemHistory = now + " " + currentCaseName +" <span class='" + className + "'>" + itemWon + "</span><br>" + oldItemHistory;
+   $('.myItems')[0].innerHTML = newItemHistory;
+   setCookie("itemHistory",newItemHistory,30);
 }
 
 function showPrize(caseName, item){
@@ -325,21 +354,27 @@ $('a').click(function(){
     $('.menu').attr("style", "display: none");
     switch(caseOption){
         case "LombardCase":
+            currentCaseName = "Skrzynia operacji lombard";
             currentCase = LombardCase.slice();
             break;
         case "MoneyCase":
+            currentCaseName = "Skrzynia z pieniędzmi";
             currentCase = MoneyCase.slice();
             break;
         case "JunkyardCase":
+            currentCaseName = "Skrzynia złomiarza";
             currentCase = JunkyardCase.slice();
             break;
         case "WorkshopCase":
+            currentCaseName = "Skrzynia op. warsztat";
             currentCase = WorkshopCase.slice();
             break;
         case "JubilerCase":
+            currentCaseName = "Skrzynia Jubilera";
             currentCase = JubilerCase.slice();
             break;
         case "PremiumCase":
+            currentCaseName = "Skrzynia Premium";
             currentCase = PremiumCase.slice();
             break;
         default:
