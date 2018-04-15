@@ -1,5 +1,5 @@
 const delay = 8000;
-var credits = 999;
+var credits = 1000;
 var required = 1;
 var currentCase;
 var CurrentCaseName;
