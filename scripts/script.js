@@ -1,7 +1,8 @@
-const delay = 7000;
+const delay = 8000;
 var credits = 999;
 var required = 1;
 var currentCase;
+
 
 $( document ).ready(function() {
   document.getElementById("credits").innerHTML = credits;
@@ -147,6 +148,22 @@ var BankCase = [
     ["✪✪", "", "", ""],
 ];
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}
+
 function showAllPrizes(caseName){
     //Wyświetlanie wszystkich możliwych przedmiotów do zdobycia
     var arr = caseName.slice();
@@ -230,8 +247,11 @@ function generateCase(caseName){
 
 function spin(caseName) {
     var newMargin = 0, newDistance = 0;
+    var mySound = new sound("sounds/sound.wav");
+
     newDistance = Math.floor((Math.random()*2000)+10000);
-	newMargin = -(newDistance);
+	  newMargin = -(newDistance);
+    mySound.play();
     $('.card').first().animate({
         marginLeft: newMargin
     }, delay);
@@ -243,6 +263,7 @@ function spin(caseName) {
 }
 
 function showPrize(caseName, item){
+    var mySound = new sound("sounds/sound2.wav");
     var arr = caseName.slice();
     var prizePicture;
 
@@ -256,6 +277,7 @@ function showPrize(caseName, item){
 
     setTimeout(function(){
             $('#myModal').fadeIn("fast");
+            mySound.play();
         }, delay+1000);
 }
 
@@ -271,6 +293,9 @@ function startSpinning(){
 }
 
 $('a').click(function(){
+    $('.back').attr('value', '1');
+    var mySound = new sound("sounds/sound3.wav");
+    mySound.play();
     var caseOption = $(this).attr('value');
     $('.bottom_field > .card_wrapper').each(function(){
         $(this).remove();
@@ -303,7 +328,6 @@ $('a').click(function(){
         if(allCases[i][0] == caseOption){
             $('.case > .card_wrapper > .card').attr('style', "background-image: url('"+allCases[i][2]+"')");
             document.getElementById('cName').innerHTML = allCases[i][1];
-            console.log("done" + allCases[i][1]);
             break;
         }
     }
@@ -314,8 +338,10 @@ $('a').click(function(){
 })
 
 $('#open').click(function() {
-
+    $('.back').attr('value', '0');
+    var mySound = new sound("sounds/sound3.wav");
     if(credits >= required){
+        mySound.play();
         credits -= required;
         $('.case_field').fadeIn("fast");
         $('#open').prop('disabled',true);
@@ -336,10 +362,22 @@ $('#open').click(function() {
 });
 
 $(".close")[0].onclick = function() {
+    var mySound = new sound("sounds/sound3.wav");
+    mySound.play();
     closeModalWindow();
     $('.case_field').fadeOut('fast');
     $('.case-opening').attr("style","display: none");
     $('.menu').attr("style", "display: block");
+}
+
+$('.back')[0].onclick = function(){
+    if($(this).attr('value')==1){
+      var mySound = new sound("sounds/sound3.wav");
+      mySound.play();
+      $('.case_field').fadeOut('fast');
+      $('.case-opening').attr("style","display: none");
+      $('.menu').attr("style", "display: block");
+    }
 }
 
 function closeModalWindow(){

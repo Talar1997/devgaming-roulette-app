@@ -1,18 +1,18 @@
 <!-- Wzorowane na: https://codepen.io/anon/pen/qovzqo
-
 Poniższy skrypt jest wyłącznie żartem i nie zostanie wprowadzony na devgaming
 
 TODO:
 -Dodać grafikę do części skrzynek
--Dodać dźwięki z csa przy losowaniu przedmiotów
 -Lista wylosowanych przedmiotów
-
 --->
 <html>
     <head>
+        <title>Ruletka</title>
         <link rel="stylesheet" href="styles/layout.css">
         <link rel="stylesheet" href="styles/roulette.css">
         <link rel="stylesheet" href="styles/modal.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
@@ -26,7 +26,7 @@ TODO:
                     </div>
                 </div>
             </div>
-            <div class="header">Usługi premium (dostępne: <span id="credits">5</span> kluczy)</div>
+            <div class="header"><i class="material-icons back" value="0">arrow_back</i><span>Usługi premium (dostępne: <span id="credits">5</span> kluczy)</span></div>
             <div class="middle menu">
                 <a class="menuItem" value="LombardCase">
                     <div class="buy-btn">

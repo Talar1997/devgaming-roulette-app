@@ -19,17 +19,25 @@ html, body{
     padding: 0;
 }
 
+.back{
+    cursor: pointer;
+}
 
 .header{
     height: 36px;
     width: 1000px;
     background-color: rgb(223,228,234);
     margin: 0 !important;
-    padding: 10px;
-    font-family: helvetica, arial, sans-serif;
-    font-size: 16px;
-    font-stretch: 100%;
-    font-style: normal;
+    padding: 6px;
+}
+
+.header > span{
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-stretch: 100%;
+  font-style: normal;
+  position: relative;
+  bottom: 5px;
 }
 
 .middle{
