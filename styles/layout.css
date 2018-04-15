@@ -23,6 +23,37 @@ html, body{
     cursor: pointer;
 }
 
+.myItems{
+  width: 100%;
+  height: auto;
+  float: left;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-bottom: 10px;
+}
+
+.myItems > span {
+  color: white;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-stretch: 100%;
+  font-weight: bold;
+  font-size: 12px;
+  /*width: 100px !important;
+  text-align: center;
+  margin-bottom: 5px;*/
+}
+
+.itemsHeader{
+  display: block;
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+}
+
 .header{
     height: 36px;
     width: 1000px;

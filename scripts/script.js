@@ -260,6 +260,28 @@ function spin(caseName) {
     var itemWon = $('#card_'+card_id).attr('value');
 
     showPrize(currentCase, itemWon);
+    addToItemList(currentCase, itemWon);
+}
+
+function addToItemList(currentCase, itemWon){
+  var arr = currentCase.slice();
+  var currentDate = new Date();
+  var day = currentDate.getDate(); if(day < 10) day = "0" + day;
+  var month = (parseInt(currentDate.getMonth())+1); if(month < 10) month = "0" + month;
+  var year = currentDate.getFullYear();
+  var hour = currentDate.getHours(); if(hour < 10) hour = "0" + hour;
+  var minutes = currentDate.getMinutes(); if(minutes < 10) minutes = "0" + minutes;
+  var seconds = currentDate.getSeconds(); if(seconds < 10) seconds = "0" + seconds;
+  var now = "[" + day + "." + month + "." + year + " " + hour + ":" + minutes + ":" + seconds + "] ";
+  var className;
+  for(var i = 0; arr.length; i++){
+      if(arr[i][0]==itemWon){
+        className = arr[i][1];
+        break;
+  }
+}
+  var old = $('.myItems')[0].innerHTML;
+  $('.myItems')[0].innerHTML = now + " <span class='" + className + "'>" + itemWon + "</span><br>" + old;
 }
 
 function showPrize(caseName, item){
