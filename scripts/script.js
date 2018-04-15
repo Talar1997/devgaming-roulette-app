@@ -1,5 +1,5 @@
 const delay = 8000;
-var credits = 1000;
+var credits = 999;
 var required = 1;
 var currentCase;
 var CurrentCaseName;
@@ -7,7 +7,7 @@ var CurrentCaseName;
 
 $( document ).ready(function() {
   var itemHistory = getCookie("itemHistory");
-  $('myItems')[0].innerHTML = itemHistory;
+  $('.myItems')[0].innerHTML = itemHistory;
   document.getElementById("credits").innerHTML = credits;
 });
 
