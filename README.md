@@ -1,4 +1,4 @@
-# ruletka-dev
+# ruletka-devgaming
 
 Hobbystyczny projekt napisany dla żartu, wylosowane przedmioty w żaden magiczny sposób nie pojawią się na waszym koncie na devgaming.pl :)
 
